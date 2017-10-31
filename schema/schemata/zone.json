@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "SigningOrder - Zones",
+  "description": "Zones represent a State",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of zone",
+      "example": "000CD01950BF7E14B11B7B50139023144915",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "description": "name of zone",
+      "example": "Utah",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "code": {
+      "description": "2 character code of zone",
+      "example": "UT",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "timezone": {
+      "description": "IANA format timezone identifier",
+      "example": "America/Denver",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/zone#/definitions/id"
+        },
+        {
+          "$ref": "/schemata/zone#/definitions/name"
+        },
+        {
+          "$ref": "/schemata/zone#/definitions/code"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing zone.",
+      "href": "/zones/{(%2Fschemata%2Fzone%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "List existing zones.",
+      "href": "/zones",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/zone#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/zone#/definitions/name"
+    },
+    "code": {
+      "$ref": "/schemata/zone#/definitions/code"
+    },
+    "timezone": {
+      "$ref": "/schemata/zone#/definitions/timezone"
+    }
+  },
+  "id": "schemata/zone"
+}

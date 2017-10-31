@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "FIXME - Order",
+  "description": "FIXME",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of order",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "description": "unique name of order",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/order#/definitions/id"
+        },
+        {
+          "$ref": "/schemata/order#/definitions/name"
+        }
+      ]
+    },
+    "created_at": {
+      "description": "when order was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when order was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new order.",
+      "href": "/orders",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing order.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing order.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "List existing orders.",
+      "href": "/orders",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    },
+    {
+      "description": "Update an existing order.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "properties": {
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "created_at": {
+      "$ref": "/schemata/order#/definitions/created_at"
+    },
+    "id": {
+      "$ref": "/schemata/order#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/order#/definitions/name"
+    },
+    "updated_at": {
+      "$ref": "/schemata/order#/definitions/updated_at"
+    }
+  },
+  "id": "schemata/order"
+}

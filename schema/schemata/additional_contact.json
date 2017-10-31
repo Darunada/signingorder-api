@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "SigningOrder - Additional Contact",
+  "description": "Additional contact on order",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/order_contact#/definitions/id"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new additional contact in the address book.",
+      "href": "/additional-contacts",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {
+          "name": { "$ref": "/schemata/order_contact#/definitions/name"},
+          "email": { "$ref": "/schemata/order_contact#/definitions/email"},
+          "phone": { "$ref": "/schemata/order_contact#/definitions/phone"}
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing additional contact from the address book.",
+      "href": "/additional-contacts/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing additional contact.",
+      "href": "/additional-contacts/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "List existing additional contacts in the address book.",
+      "href": "/additional-contacts",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    },
+    {
+      "description": "Update an existing additional contact.",
+      "href": "/additional-contacts/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "properties": {
+          "name": { "$ref": "/schemata/order_contact#/definitions/name"},
+          "email": { "$ref": "/schemata/order_contact#/definitions/email"},
+          "phone": { "$ref": "/schemata/order_contact#/definitions/phone"}
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/order_contact#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/order_contact#/definitions/name"
+    },
+    "phone": {
+      "$ref": "/schemata/order_contact#/definitions/phone"
+    },
+    "address_book": {
+      "$ref": "/schemata/order_contact#/definitions/address_book"
+    },
+    "created_at": {
+      "$ref": "/schemata/order_contact#/definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "/schemata/order_contact#/definitions/updated_at"
+    }
+  },
+  "id": "schemata/additional_contact"
+}

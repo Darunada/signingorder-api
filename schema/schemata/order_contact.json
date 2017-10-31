@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Signing Order - Order Contact",
+  "description": "An Order Contact",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of order_contact",
+      "example": "01958EA1B308807443495AB1462573598756",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "description": "name of order_contact",
+      "example": "Joe Contact",
+      "type": [
+        "string"
+      ]
+    },
+
+    "email": {
+      "description": "email of order_contact",
+      "example": "order@contact.com",
+      "format": "email",
+      "type": [
+        "string"
+      ]
+    },
+
+    "phone": {
+      "description": "phone of order_contact",
+      "example": "555-555-5555",
+      "type": [
+        "string"
+      ],
+      "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+    },
+
+    "altphone": {
+      "description": "alternate phone of order_contact",
+      "example": "444-444-4444",
+      "type": [
+        "string"
+      ],
+      "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+    },
+
+    "type": {
+      "description": "type of order_contact",
+      "type": [
+        "string"
+      ],
+      "enum": [ "order_contact", "inhouse_contact", "loan_officer", "additional_contact"]
+    },
+
+    "private": {
+      "description": "show to notaries",
+      "example": false,
+      "type": [
+        "boolean"
+      ]
+    },
+
+    "address_book": {
+      "description": "in address book",
+      "example": true,
+      "type": [
+        "boolean"
+      ]
+    },
+
+
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/order_contact#/definitions/id"
+        }
+      ]
+    },
+
+    "created_at": {
+      "description": "when order_contact was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when order_contact was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new order contact in the address book.",
+      "href": "/order-contacts",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {
+          "name": { "$ref": "/schemata/order_contact#/definitions/name"},
+          "email": { "$ref": "/schemata/order_contact#/definitions/email"},
+          "phone": { "$ref": "/schemata/order_contact#/definitions/phone"},
+          "altphone": { "$ref": "/schemata/order_contact#/definitions/altphone"}
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+
+    {
+      "description": "Delete an existing order contact from the address book.",
+      "href": "/order-contacts/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing order contact.",
+      "href": "/order-contacts/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "Update an existing order contact.",
+      "href": "/order-contacts/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "properties": {
+          "name": { "$ref": "/schemata/order_contact#/definitions/name"},
+          "email": { "$ref": "/schemata/order_contact#/definitions/email"},
+          "phone": { "$ref": "/schemata/order_contact#/definitions/phone"},
+          "altphone": { "$ref": "/schemata/order_contact#/definitions/altphone"}
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/order_contact#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/order_contact#/definitions/name"
+    },
+    "phone": {
+      "$ref": "/schemata/order_contact#/definitions/phone"
+    },
+    "altphone": {
+      "$ref": "/schemata/order_contact#/definitions/altphone"
+    },
+    "address_book": {
+      "$ref": "/schemata/order_contact#/definitions/address_book"
+    },
+    "created_at": {
+      "$ref": "/schemata/order_contact#/definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "/schemata/order_contact#/definitions/updated_at"
+    }
+  },
+  "id": "schemata/order_contact"
+}

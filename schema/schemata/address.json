@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "SigningOrder - Addresses",
+  "description": "A Street Address",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of address",
+      "example": "00000021A1442D8439B95C61432235892314",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "company": {
+      "description": "company name of the address",
+      "example": "Starbucks",
+      "type": [
+        "string"
+      ]
+    },
+    "address1": {
+      "description": "line 1 of the address",
+      "example": "56 W 9000 S",
+      "type": [
+        "string"
+      ]
+    },
+    "address2": {
+      "description": "line 2 of the address",
+      "example": "",
+      "type": [
+        "string"
+      ]
+    },
+    "city": {
+      "description": "city name",
+      "example": "Sandy",      
+      "type": [
+        "string"
+      ]
+    },
+    "zone": {
+      "description": "zone",
+      "example": "UT",
+      "type": [
+        "string"
+      ]
+    },
+    "zipcode": {
+      "description": "zipcode",
+      "example": "84070",
+      "type": [
+        "string"
+      ]
+    },
+    "address_type": {
+      "description": "address type",
+      "example": "signing",
+      "readOnly": true,
+      "type": [
+        "string"
+      ],
+      "enum": [ "signing", "property" ]
+    },
+    "created_at": {
+      "description": "when address was created",
+      "format": "date-time",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when address was updated",
+      "format": "date-time",
+      "readOnly": true,
+      "type": [
+        "string"
+      ]
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/address#/definitions/id"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Info for existing address.",
+      "href": "/addresses/{(%2Fschemata%2Faddress%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "Update an existing address.",
+      "href": "/addresses/{(%2Fschemata%2Faddress%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "properties": {
+          "company": { "$ref": "/schemata/address#/definitions/company" },
+          "address1": { "$ref": "/schemata/address#/definitions/address1" },
+          "address2": { "$ref": "/schemata/address#/definitions/address2" },
+          "city": { "$ref": "/schemata/address#/definitions/city" },
+          "zone": { "$ref": "/schemata/zone#/definitions/identity" },
+          "zipcode": { "$ref": "/schemata/address#/definitions/zipcode" }
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/address#/definitions/id"
+    },
+    "company": {
+      "$ref": "/schemata/address#/definitions/company"
+    },
+    "address1": {
+      "$ref": "/schemata/address#/definitions/address1"
+    },
+    "address2": {
+      "$ref": "/schemata/address#/definitions/address2"
+    },
+    "city": {
+      "$ref": "/schemata/address#/definitions/city"
+    },
+    "zone": {
+      "description": "zone this resource is located in",
+      "properties": {
+        "id": { "$ref" :"/schemata/zone#/definitions/id" },
+        "name": { "$ref" :"/schemata/zone#/definitions/name" },
+        "code": { "$ref" :"/schemata/zone#/definitions/code" },
+        "timezone": { "$ref" :"/schemata/zone#/definitions/timezone" }
+      },      
+      "type": ["object"]
+    },
+    "zipcode": {
+      "$ref": "/schemata/address#/definitions/zipcode"
+    },
+    "type": {
+      "$ref": "/schemata/address#/definitions/address_type"
+    },
+    "created_at": {
+      "$ref": "/schemata/address#/definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "/schemata/address#/definitions/updated_at"
+    }
+  },
+  "id": "schemata/address"
+}

@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "SigningOrder - Loan Officer",
+  "description": "Loan Officer contact on order",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/order_contact#/definitions/id"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new loan officer contact in the address book.",
+      "href": "/loan-officer",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "properties": {
+          "name": { "$ref": "/schemata/order_contact#/definitions/name"},
+          "email": { "$ref": "/schemata/order_contact#/definitions/email"},
+          "phone": { "$ref": "/schemata/order_contact#/definitions/phone"},
+          "private": { "$ref": "/schemata/order_contact#/definitions/private"}
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing loan officer contact from the address book.",
+      "href": "/loan-officer/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing loan officer contact.",
+      "href": "/loan-officer/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "List existing loan officer contacts in the address book.",
+      "href": "/loan-officer",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    },
+    {
+      "description": "Update an existing loan officer contact.",
+      "href": "/loan-officer/{(%2Fschemata%2Forder_contact%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "update",
+      "schema": {
+        "properties": {
+          "name": { "$ref": "/schemata/order_contact#/definitions/name"},
+          "email": { "$ref": "/schemata/order_contact#/definitions/email"},
+          "phone": { "$ref": "/schemata/order_contact#/definitions/phone"},
+          "phone": { "$ref": "/schemata/order_contact#/definitions/private"}
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Update"
+    }
+  ],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/order_contact#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/order_contact#/definitions/name"
+    },
+    "phone": {
+      "$ref": "/schemata/order_contact#/definitions/phone"
+    },
+    "address_book": {
+      "$ref": "/schemata/order_contact#/definitions/address_book"
+    },
+    "private": {
+      "$ref": "/schemata/order_contact#/definitions/private"
+    },
+    "created_at": {
+      "$ref": "/schemata/order_contact#/definitions/created_at"
+    },
+    "updated_at": {
+      "$ref": "/schemata/order_contact#/definitions/updated_at"
+    }
+  },
+  "id": "schemata/loan_officer"
+}

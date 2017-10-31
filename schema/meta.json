@@ -1,0 +1,9 @@
+{
+ "description": "SigningOrder Public API",
+ "id": "signingorder-api",
+ "links": [{
+   "href": "https://api.signingorder.com",
+   "rel": "self"
+ }],
+ "title": "SigningOrder"
+}

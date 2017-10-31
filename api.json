@@ -1,0 +1,955 @@
+{
+  "$schema": "http://interagent.github.io/interagent-hyper-schema",
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "additional_contact": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "SigningOrder - Additional Contact",
+      "description": "Additional contact on order",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/order_contact/definitions/id"
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new additional contact in the address book.",
+          "href": "/additional-contacts",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/phone"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing additional contact from the address book.",
+          "href": "/additional-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing additional contact.",
+          "href": "/additional-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing additional contacts in the address book.",
+          "href": "/additional-contacts",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing additional contact.",
+          "href": "/additional-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/phone"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/order_contact/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/order_contact/definitions/name"
+        },
+        "phone": {
+          "$ref": "#/definitions/order_contact/definitions/phone"
+        },
+        "address_book": {
+          "$ref": "#/definitions/order_contact/definitions/address_book"
+        },
+        "created_at": {
+          "$ref": "#/definitions/order_contact/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/order_contact/definitions/updated_at"
+        }
+      }
+    },
+    "address": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "SigningOrder - Addresses",
+      "description": "A Street Address",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of address",
+          "example": "00000021A1442D8439B95C61432235892314",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "company": {
+          "description": "company name of the address",
+          "example": "Starbucks",
+          "type": [
+            "string"
+          ]
+        },
+        "address1": {
+          "description": "line 1 of the address",
+          "example": "56 W 9000 S",
+          "type": [
+            "string"
+          ]
+        },
+        "address2": {
+          "description": "line 2 of the address",
+          "example": "",
+          "type": [
+            "string"
+          ]
+        },
+        "city": {
+          "description": "city name",
+          "example": "Sandy",
+          "type": [
+            "string"
+          ]
+        },
+        "zone": {
+          "description": "zone",
+          "example": "UT",
+          "type": [
+            "string"
+          ]
+        },
+        "zipcode": {
+          "description": "zipcode",
+          "example": "84070",
+          "type": [
+            "string"
+          ]
+        },
+        "address_type": {
+          "description": "address type",
+          "example": "signing",
+          "readOnly": true,
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "signing",
+            "property"
+          ]
+        },
+        "created_at": {
+          "description": "when address was created",
+          "format": "date-time",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when address was updated",
+          "format": "date-time",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/address/definitions/id"
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Info for existing address.",
+          "href": "/addresses/{(%23%2Fdefinitions%2Faddress%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "Update an existing address.",
+          "href": "/addresses/{(%23%2Fdefinitions%2Faddress%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "company": {
+                "$ref": "#/definitions/address/definitions/company"
+              },
+              "address1": {
+                "$ref": "#/definitions/address/definitions/address1"
+              },
+              "address2": {
+                "$ref": "#/definitions/address/definitions/address2"
+              },
+              "city": {
+                "$ref": "#/definitions/address/definitions/city"
+              },
+              "zone": {
+                "$ref": "#/definitions/zone/definitions/identity"
+              },
+              "zipcode": {
+                "$ref": "#/definitions/address/definitions/zipcode"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/address/definitions/id"
+        },
+        "company": {
+          "$ref": "#/definitions/address/definitions/company"
+        },
+        "address1": {
+          "$ref": "#/definitions/address/definitions/address1"
+        },
+        "address2": {
+          "$ref": "#/definitions/address/definitions/address2"
+        },
+        "city": {
+          "$ref": "#/definitions/address/definitions/city"
+        },
+        "zone": {
+          "description": "zone this resource is located in",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/zone/definitions/id"
+            },
+            "name": {
+              "$ref": "#/definitions/zone/definitions/name"
+            },
+            "code": {
+              "$ref": "#/definitions/zone/definitions/code"
+            },
+            "timezone": {
+              "$ref": "#/definitions/zone/definitions/timezone"
+            }
+          },
+          "type": [
+            "object"
+          ]
+        },
+        "zipcode": {
+          "$ref": "#/definitions/address/definitions/zipcode"
+        },
+        "type": {
+          "$ref": "#/definitions/address/definitions/address_type"
+        },
+        "created_at": {
+          "$ref": "#/definitions/address/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/address/definitions/updated_at"
+        }
+      }
+    },
+    "inhouse_contact": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "SigningOrder - Inhouse Contact",
+      "description": "Inhouse Contact on order",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/order_contact/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/order_contact/definitions/name"
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new inhouse contact in the address book.",
+          "href": "/inhouse-contacts",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/phone"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing inhouse contact from the address book.",
+          "href": "/inhouse-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing inhouse contact.",
+          "href": "/inhouse-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing inhouse contacts in the address book.",
+          "href": "/inhouse-contacts",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing inhouse contact.",
+          "href": "/inhouse-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/phone"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/order_contact/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/order_contact/definitions/name"
+        },
+        "phone": {
+          "$ref": "#/definitions/order_contact/definitions/phone"
+        },
+        "address_book": {
+          "$ref": "#/definitions/order_contact/definitions/address_book"
+        },
+        "created_at": {
+          "$ref": "#/definitions/order_contact/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/order_contact/definitions/updated_at"
+        }
+      }
+    },
+    "loan_officer": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "SigningOrder - Loan Officer",
+      "description": "Loan Officer contact on order",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/order_contact/definitions/id"
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new loan officer contact in the address book.",
+          "href": "/loan-officer",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/phone"
+              },
+              "private": {
+                "$ref": "#/definitions/order_contact/definitions/private"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing loan officer contact from the address book.",
+          "href": "/loan-officer/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing loan officer contact.",
+          "href": "/loan-officer/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing loan officer contacts in the address book.",
+          "href": "/loan-officer",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing loan officer contact.",
+          "href": "/loan-officer/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/private"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/order_contact/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/order_contact/definitions/name"
+        },
+        "phone": {
+          "$ref": "#/definitions/order_contact/definitions/phone"
+        },
+        "address_book": {
+          "$ref": "#/definitions/order_contact/definitions/address_book"
+        },
+        "private": {
+          "$ref": "#/definitions/order_contact/definitions/private"
+        },
+        "created_at": {
+          "$ref": "#/definitions/order_contact/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/order_contact/definitions/updated_at"
+        }
+      }
+    },
+    "order": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "FIXME - Order",
+      "description": "FIXME",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of order",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "unique name of order",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/order/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/order/definitions/name"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when order was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when order was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new order.",
+          "href": "/orders",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing order.",
+          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing order.",
+          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing orders.",
+          "href": "/orders",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        },
+        {
+          "description": "Update an existing order.",
+          "href": "/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "created_at": {
+          "$ref": "#/definitions/order/definitions/created_at"
+        },
+        "id": {
+          "$ref": "#/definitions/order/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/order/definitions/name"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/order/definitions/updated_at"
+        }
+      }
+    },
+    "order_contact": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "Signing Order - Order Contact",
+      "description": "An Order Contact",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of order_contact",
+          "example": "01958EA1B308807443495AB1462573598756",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "name of order_contact",
+          "example": "Joe Contact",
+          "type": [
+            "string"
+          ]
+        },
+        "email": {
+          "description": "email of order_contact",
+          "example": "order@contact.com",
+          "format": "email",
+          "type": [
+            "string"
+          ]
+        },
+        "phone": {
+          "description": "phone of order_contact",
+          "example": "555-555-5555",
+          "type": [
+            "string"
+          ],
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+        },
+        "altphone": {
+          "description": "alternate phone of order_contact",
+          "example": "444-444-4444",
+          "type": [
+            "string"
+          ],
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+        },
+        "type": {
+          "description": "type of order_contact",
+          "type": [
+            "string"
+          ],
+          "enum": [
+            "order_contact",
+            "inhouse_contact",
+            "loan_officer",
+            "additional_contact"
+          ]
+        },
+        "private": {
+          "description": "show to notaries",
+          "example": false,
+          "type": [
+            "boolean"
+          ]
+        },
+        "address_book": {
+          "description": "in address book",
+          "example": true,
+          "type": [
+            "boolean"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/order_contact/definitions/id"
+            }
+          ]
+        },
+        "created_at": {
+          "description": "when order_contact was created",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        },
+        "updated_at": {
+          "description": "when order_contact was updated",
+          "format": "date-time",
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Create a new order contact in the address book.",
+          "href": "/order-contacts",
+          "method": "POST",
+          "rel": "create",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/phone"
+              },
+              "altphone": {
+                "$ref": "#/definitions/order_contact/definitions/altphone"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Create"
+        },
+        {
+          "description": "Delete an existing order contact from the address book.",
+          "href": "/order-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "DELETE",
+          "rel": "destroy",
+          "title": "Delete"
+        },
+        {
+          "description": "Info for existing order contact.",
+          "href": "/order-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "Update an existing order contact.",
+          "href": "/order-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}",
+          "method": "PATCH",
+          "rel": "update",
+          "schema": {
+            "properties": {
+              "name": {
+                "$ref": "#/definitions/order_contact/definitions/name"
+              },
+              "email": {
+                "$ref": "#/definitions/order_contact/definitions/email"
+              },
+              "phone": {
+                "$ref": "#/definitions/order_contact/definitions/phone"
+              },
+              "altphone": {
+                "$ref": "#/definitions/order_contact/definitions/altphone"
+              }
+            },
+            "type": [
+              "object"
+            ]
+          },
+          "title": "Update"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/order_contact/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/order_contact/definitions/name"
+        },
+        "phone": {
+          "$ref": "#/definitions/order_contact/definitions/phone"
+        },
+        "altphone": {
+          "$ref": "#/definitions/order_contact/definitions/altphone"
+        },
+        "address_book": {
+          "$ref": "#/definitions/order_contact/definitions/address_book"
+        },
+        "created_at": {
+          "$ref": "#/definitions/order_contact/definitions/created_at"
+        },
+        "updated_at": {
+          "$ref": "#/definitions/order_contact/definitions/updated_at"
+        }
+      }
+    },
+    "zone": {
+      "$schema": "http://json-schema.org/draft-04/hyper-schema",
+      "title": "SigningOrder - Zones",
+      "description": "Zones represent a State",
+      "stability": "prototype",
+      "strictProperties": true,
+      "type": [
+        "object"
+      ],
+      "definitions": {
+        "id": {
+          "description": "unique identifier of zone",
+          "example": "000CD01950BF7E14B11B7B50139023144915",
+          "readOnly": true,
+          "format": "uuid",
+          "type": [
+            "string"
+          ]
+        },
+        "name": {
+          "description": "name of zone",
+          "example": "Utah",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "code": {
+          "description": "2 character code of zone",
+          "example": "UT",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "timezone": {
+          "description": "IANA format timezone identifier",
+          "example": "America/Denver",
+          "readOnly": true,
+          "type": [
+            "string"
+          ]
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/zone/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/zone/definitions/name"
+            },
+            {
+              "$ref": "#/definitions/zone/definitions/code"
+            }
+          ]
+        }
+      },
+      "links": [
+        {
+          "description": "Info for existing zone.",
+          "href": "/zones/{(%23%2Fdefinitions%2Fzone%2Fdefinitions%2Fidentity)}",
+          "method": "GET",
+          "rel": "self",
+          "title": "Info"
+        },
+        {
+          "description": "List existing zones.",
+          "href": "/zones",
+          "method": "GET",
+          "rel": "instances",
+          "title": "List"
+        }
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/zone/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/zone/definitions/name"
+        },
+        "code": {
+          "$ref": "#/definitions/zone/definitions/code"
+        },
+        "timezone": {
+          "$ref": "#/definitions/zone/definitions/timezone"
+        }
+      }
+    }
+  },
+  "properties": {
+    "additional_contact": {
+      "$ref": "#/definitions/additional_contact"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "inhouse_contact": {
+      "$ref": "#/definitions/inhouse_contact"
+    },
+    "loan_officer": {
+      "$ref": "#/definitions/loan_officer"
+    },
+    "order": {
+      "$ref": "#/definitions/order"
+    },
+    "order_contact": {
+      "$ref": "#/definitions/order_contact"
+    },
+    "zone": {
+      "$ref": "#/definitions/zone"
+    }
+  },
+  "description": "SigningOrder Public API",
+  "id": "signingorder-api",
+  "links": [
+    {
+      "href": "https://api.signingorder.com",
+      "rel": "self"
+    }
+  ],
+  "title": "SigningOrder"
+}
