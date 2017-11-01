@@ -865,9 +865,87 @@ FIXME
 
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
+| **[additional_contact:address_book](#resource-order_contact)** | *boolean* | in address book | `true` |
+| **[additional_contact:created_at](#resource-order_contact)** | *date-time* | when order_contact was created | `"2015-01-01T12:00:00Z"` |
+| **[additional_contact:id](#resource-order_contact)** | *uuid* | unique identifier of order_contact | `"01958EA1B308807443495AB1462573598756"` |
+| **[additional_contact:name](#resource-order_contact)** | *string* | name of order_contact | `"Joe Contact"` |
+| **[additional_contact:phone](#resource-order_contact)** | *string* | phone of order_contact<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
+| **[additional_contact:updated_at](#resource-order_contact)** | *date-time* | when order_contact was updated | `"2015-01-01T12:00:00Z"` |
+| **closing_date** | *string* | closing_date | `"example"` |
+| **closing_time** | *nullable string* | closing_time | `null` |
+| **closing_time_mode** | *string* | closing time mode<br/> **one of:**`"time"` or `"tbd"` or `"asap"` | `"time"` |
+| **closing_timezone** | *nullable string* | closing_timezone | `null` |
+| **contact_altphone1** | *string* | alternate phone of signer<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
+| **contact_altphone1_type** | *string* | alternate phone type | `"example"` |
+| **contact_altphone2** | *string* | second alterate for signer<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
+| **contact_altphone2_type** | *string* | alternate phone2 type | `"example"` |
+| **contact_info** | *string* | special instructions | `"Use Blue ink only"` |
+| **contact_phone** | *string* | primary phone of signer<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
+| **contact_phone_type** | *string* | contact phone type | `"example"` |
+| **cosigner_first_name** | *string* | cosigner first name | `"example"` |
+| **cosigner_last_name** | *string* | cosigner last name | `"example"` |
+| **cosigner_spouse_first_name** | *string* | cosigner first name | `"example"` |
+| **cosigner_spouse_last_name** | *string* | cosigner last name | `"example"` |
 | **created_at** | *date-time* | when order was created | `"2015-01-01T12:00:00Z"` |
-| **id** | *uuid* | unique identifier of order | `"01234567-89ab-cdef-0123-456789abcdef"` |
-| **name** | *string* | unique name of order | `"example"` |
+| **escrow_number** | *string* | escrow number | `"example"` |
+| **faxbacks** | *boolean* | requires faxbacks? | `true` |
+| **id** | *uuid* | unique identifier of order | `"01958EA1B308807443495AB1462573598756"` |
+| **[inhouse_contact:address_book](#resource-order_contact)** | *boolean* | in address book | `true` |
+| **[inhouse_contact:created_at](#resource-order_contact)** | *date-time* | when order_contact was created | `"2015-01-01T12:00:00Z"` |
+| **[inhouse_contact:id](#resource-order_contact)** | *uuid* | unique identifier of order_contact | `"01958EA1B308807443495AB1462573598756"` |
+| **[inhouse_contact:name](#resource-order_contact)** | *string* | name of order_contact | `"Joe Contact"` |
+| **[inhouse_contact:phone](#resource-order_contact)** | *string* | phone of order_contact<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
+| **[inhouse_contact:updated_at](#resource-order_contact)** | *date-time* | when order_contact was updated | `"2015-01-01T12:00:00Z"` |
+| **[loan_officer](#resource-order_contact)** | *nullable object* | Loan Officer contact on order | `null` |
+| **[loan_officer:address_book](#resource-order_contact)** | *boolean* | in address book | `true` |
+| **[loan_officer:created_at](#resource-order_contact)** | *date-time* | when order_contact was created | `"2015-01-01T12:00:00Z"` |
+| **[loan_officer:id](#resource-order_contact)** | *uuid* | unique identifier of order_contact | `"01958EA1B308807443495AB1462573598756"` |
+| **[loan_officer:name](#resource-order_contact)** | *string* | name of order_contact | `"Joe Contact"` |
+| **[loan_officer:phone](#resource-order_contact)** | *string* | phone of order_contact<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
+| **[loan_officer:private](#resource-order_contact)** | *boolean* | show to notaries | `false` |
+| **[loan_officer:updated_at](#resource-order_contact)** | *date-time* | when order_contact was updated | `"2015-01-01T12:00:00Z"` |
+| **[order_contact:address_book](#resource-order_contact)** | *boolean* | in address book | `true` |
+| **[order_contact:altphone](#resource-order_contact)** | *string* | alternate phone of order_contact<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"444-444-4444"` |
+| **[order_contact:created_at](#resource-order_contact)** | *date-time* | when order_contact was created | `"2015-01-01T12:00:00Z"` |
+| **[order_contact:id](#resource-order_contact)** | *uuid* | unique identifier of order_contact | `"01958EA1B308807443495AB1462573598756"` |
+| **[order_contact:name](#resource-order_contact)** | *string* | name of order_contact | `"Joe Contact"` |
+| **[order_contact:phone](#resource-order_contact)** | *string* | phone of order_contact<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
+| **[order_contact:updated_at](#resource-order_contact)** | *date-time* | when order_contact was updated | `"2015-01-01T12:00:00Z"` |
+| **[property_address:address1](#resource-address)** | *string* | line 1 of the address | `"56 W 9000 S"` |
+| **[property_address:address2](#resource-address)** | *string* | line 2 of the address | `""` |
+| **[property_address:city](#resource-address)** | *string* | city name | `"Sandy"` |
+| **[property_address:company](#resource-address)** | *string* | company name of the address | `"Starbucks"` |
+| **[property_address:created_at](#resource-address)** | *date-time* | when address was created | `"2015-01-01T12:00:00Z"` |
+| **[property_address:id](#resource-address)** | *uuid* | unique identifier of address | `"00000021A1442D8439B95C61432235892314"` |
+| **[property_address:type](#resource-address)** | *string* | address type<br/> **one of:**`"signing"` or `"property"` | `"signing"` |
+| **[property_address:updated_at](#resource-address)** | *date-time* | when address was updated | `"2015-01-01T12:00:00Z"` |
+| **[property_address:zipcode](#resource-address)** | *string* | zipcode | `"84070"` |
+| **[property_address:zone:code](#resource-zone)** | *string* | 2 character code of zone | `"UT"` |
+| **[property_address:zone:id](#resource-zone)** | *uuid* | unique identifier | `"000CD01950BF7E14B11B7B50139023144915"` |
+| **[property_address:zone:name](#resource-zone)** | *string* | name of zone | `"Utah"` |
+| **[property_address:zone:timezone](#resource-zone)** | *string* | IANA format timezone identifier | `"America/Denver"` |
+| **return_instructions** | *string* | document return instructions | `"shipping label provided"` |
+| **signer_email** | *email* | signer's email | `"signers@email.com"` |
+| **signer_first_name** | *string* | signer first name | `"example"` |
+| **signer_last_name** | *string* | signer last name | `"example"` |
+| **signer_spouse_first_name** | *string* | signer spouse first name | `"example"` |
+| **signer_spouse_last_name** | *string* | signer spuse last name | `"example"` |
+| **[signing_address:address1](#resource-address)** | *string* | line 1 of the address | `"56 W 9000 S"` |
+| **[signing_address:address2](#resource-address)** | *string* | line 2 of the address | `""` |
+| **[signing_address:city](#resource-address)** | *string* | city name | `"Sandy"` |
+| **[signing_address:company](#resource-address)** | *string* | company name of the address | `"Starbucks"` |
+| **[signing_address:created_at](#resource-address)** | *date-time* | when address was created | `"2015-01-01T12:00:00Z"` |
+| **[signing_address:id](#resource-address)** | *uuid* | unique identifier of address | `"00000021A1442D8439B95C61432235892314"` |
+| **[signing_address:type](#resource-address)** | *string* | address type<br/> **one of:**`"signing"` or `"property"` | `"signing"` |
+| **[signing_address:updated_at](#resource-address)** | *date-time* | when address was updated | `"2015-01-01T12:00:00Z"` |
+| **[signing_address:zipcode](#resource-address)** | *string* | zipcode | `"84070"` |
+| **[signing_address:zone:code](#resource-zone)** | *string* | 2 character code of zone | `"UT"` |
+| **[signing_address:zone:id](#resource-zone)** | *uuid* | unique identifier | `"000CD01950BF7E14B11B7B50139023144915"` |
+| **[signing_address:zone:name](#resource-zone)** | *string* | name of zone | `"Utah"` |
+| **[signing_address:zone:timezone](#resource-zone)** | *string* | IANA format timezone identifier | `"America/Denver"` |
+| **signing_type** | *integer* | signing type | `42` |
+| **special_instructions** | *string* | special instructions | `"Use Blue ink only"` |
+| **status** | *string* | order status | `"ASSIGNED"` |
 | **updated_at** | *date-time* | when order was updated | `"2015-01-01T12:00:00Z"` |
 
 ### <a name="link-POST-order-/orders">Order Create</a>
@@ -897,9 +975,102 @@ HTTP/1.1 201 Created
 
 ```json
 {
+  "id": "01958EA1B308807443495AB1462573598756",
+  "order_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "altphone": "444-444-4444",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "additional_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "inhouse_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "loan_officer": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "private": false,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "property_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "signing_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "escrow_number": "example",
+  "closing_date": "example",
+  "closing_time": null,
+  "closing_timezone": null,
+  "closing_time_mode": "time",
+  "signing_type": 42,
+  "signer_first_name": "example",
+  "signer_last_name": "example",
+  "signer_spouse_first_name": "example",
+  "signer_spouse_last_name": "example",
+  "cosigner_first_name": "example",
+  "cosigner_last_name": "example",
+  "cosigner_spouse_first_name": "example",
+  "cosigner_spouse_last_name": "example",
+  "contact_phone": "555-555-5555",
+  "contact_phone_type": "example",
+  "contact_altphone1": "555-555-5555",
+  "contact_altphone1_type": "example",
+  "contact_altphone2": "555-555-5555",
+  "contact_altphone2_type": "example",
+  "signer_email": "signers@email.com",
+  "status": "ASSIGNED",
+  "special_instructions": "Use Blue ink only",
+  "contact_info": "Use Blue ink only",
+  "return_instructions": "shipping label provided",
+  "faxbacks": true,
   "created_at": "2015-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "name": "example",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -909,14 +1080,14 @@ HTTP/1.1 201 Created
 Delete an existing order.
 
 ```
-DELETE /orders/{order_id_or_name}
+DELETE /orders/{order_id}
 ```
 
 
 #### Curl Example
 
 ```bash
-$ curl -n -X DELETE https://api.signingorder.com/orders/$ORDER_ID_OR_NAME \
+$ curl -n -X DELETE https://api.signingorder.com/orders/$ORDER_ID \
   -H "Content-Type: application/json"
 ```
 
@@ -929,9 +1100,102 @@ HTTP/1.1 200 OK
 
 ```json
 {
+  "id": "01958EA1B308807443495AB1462573598756",
+  "order_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "altphone": "444-444-4444",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "additional_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "inhouse_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "loan_officer": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "private": false,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "property_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "signing_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "escrow_number": "example",
+  "closing_date": "example",
+  "closing_time": null,
+  "closing_timezone": null,
+  "closing_time_mode": "time",
+  "signing_type": 42,
+  "signer_first_name": "example",
+  "signer_last_name": "example",
+  "signer_spouse_first_name": "example",
+  "signer_spouse_last_name": "example",
+  "cosigner_first_name": "example",
+  "cosigner_last_name": "example",
+  "cosigner_spouse_first_name": "example",
+  "cosigner_spouse_last_name": "example",
+  "contact_phone": "555-555-5555",
+  "contact_phone_type": "example",
+  "contact_altphone1": "555-555-5555",
+  "contact_altphone1_type": "example",
+  "contact_altphone2": "555-555-5555",
+  "contact_altphone2_type": "example",
+  "signer_email": "signers@email.com",
+  "status": "ASSIGNED",
+  "special_instructions": "Use Blue ink only",
+  "contact_info": "Use Blue ink only",
+  "return_instructions": "shipping label provided",
+  "faxbacks": true,
   "created_at": "2015-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "name": "example",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -941,14 +1205,14 @@ HTTP/1.1 200 OK
 Info for existing order.
 
 ```
-GET /orders/{order_id_or_name}
+GET /orders/{order_id}
 ```
 
 
 #### Curl Example
 
 ```bash
-$ curl -n https://api.signingorder.com/orders/$ORDER_ID_OR_NAME
+$ curl -n https://api.signingorder.com/orders/$ORDER_ID
 ```
 
 
@@ -960,9 +1224,102 @@ HTTP/1.1 200 OK
 
 ```json
 {
+  "id": "01958EA1B308807443495AB1462573598756",
+  "order_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "altphone": "444-444-4444",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "additional_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "inhouse_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "loan_officer": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "private": false,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "property_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "signing_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "escrow_number": "example",
+  "closing_date": "example",
+  "closing_time": null,
+  "closing_timezone": null,
+  "closing_time_mode": "time",
+  "signing_type": 42,
+  "signer_first_name": "example",
+  "signer_last_name": "example",
+  "signer_spouse_first_name": "example",
+  "signer_spouse_last_name": "example",
+  "cosigner_first_name": "example",
+  "cosigner_last_name": "example",
+  "cosigner_spouse_first_name": "example",
+  "cosigner_spouse_last_name": "example",
+  "contact_phone": "555-555-5555",
+  "contact_phone_type": "example",
+  "contact_altphone1": "555-555-5555",
+  "contact_altphone1_type": "example",
+  "contact_altphone2": "555-555-5555",
+  "contact_altphone2_type": "example",
+  "signer_email": "signers@email.com",
+  "status": "ASSIGNED",
+  "special_instructions": "Use Blue ink only",
+  "contact_info": "Use Blue ink only",
+  "return_instructions": "shipping label provided",
+  "faxbacks": true,
   "created_at": "2015-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "name": "example",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -992,9 +1349,102 @@ HTTP/1.1 200 OK
 ```json
 [
   {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "order_contact": {
+      "id": "01958EA1B308807443495AB1462573598756",
+      "name": "Joe Contact",
+      "phone": "555-555-5555",
+      "altphone": "444-444-4444",
+      "address_book": true,
+      "created_at": "2015-01-01T12:00:00Z",
+      "updated_at": "2015-01-01T12:00:00Z"
+    },
+    "additional_contact": {
+      "id": "01958EA1B308807443495AB1462573598756",
+      "name": "Joe Contact",
+      "phone": "555-555-5555",
+      "address_book": true,
+      "created_at": "2015-01-01T12:00:00Z",
+      "updated_at": "2015-01-01T12:00:00Z"
+    },
+    "inhouse_contact": {
+      "id": "01958EA1B308807443495AB1462573598756",
+      "name": "Joe Contact",
+      "phone": "555-555-5555",
+      "address_book": true,
+      "created_at": "2015-01-01T12:00:00Z",
+      "updated_at": "2015-01-01T12:00:00Z"
+    },
+    "loan_officer": {
+      "id": "01958EA1B308807443495AB1462573598756",
+      "name": "Joe Contact",
+      "phone": "555-555-5555",
+      "address_book": true,
+      "private": false,
+      "created_at": "2015-01-01T12:00:00Z",
+      "updated_at": "2015-01-01T12:00:00Z"
+    },
+    "property_address": {
+      "id": "00000021A1442D8439B95C61432235892314",
+      "company": "Starbucks",
+      "address1": "56 W 9000 S",
+      "address2": "",
+      "city": "Sandy",
+      "zone": {
+        "id": "000CD01950BF7E14B11B7B50139023144915",
+        "name": "Utah",
+        "code": "UT",
+        "timezone": "America/Denver"
+      },
+      "zipcode": "84070",
+      "type": "signing",
+      "created_at": "2015-01-01T12:00:00Z",
+      "updated_at": "2015-01-01T12:00:00Z"
+    },
+    "signing_address": {
+      "id": "00000021A1442D8439B95C61432235892314",
+      "company": "Starbucks",
+      "address1": "56 W 9000 S",
+      "address2": "",
+      "city": "Sandy",
+      "zone": {
+        "id": "000CD01950BF7E14B11B7B50139023144915",
+        "name": "Utah",
+        "code": "UT",
+        "timezone": "America/Denver"
+      },
+      "zipcode": "84070",
+      "type": "signing",
+      "created_at": "2015-01-01T12:00:00Z",
+      "updated_at": "2015-01-01T12:00:00Z"
+    },
+    "escrow_number": "example",
+    "closing_date": "example",
+    "closing_time": null,
+    "closing_timezone": null,
+    "closing_time_mode": "time",
+    "signing_type": 42,
+    "signer_first_name": "example",
+    "signer_last_name": "example",
+    "signer_spouse_first_name": "example",
+    "signer_spouse_last_name": "example",
+    "cosigner_first_name": "example",
+    "cosigner_last_name": "example",
+    "cosigner_spouse_first_name": "example",
+    "cosigner_spouse_last_name": "example",
+    "contact_phone": "555-555-5555",
+    "contact_phone_type": "example",
+    "contact_altphone1": "555-555-5555",
+    "contact_altphone1_type": "example",
+    "contact_altphone2": "555-555-5555",
+    "contact_altphone2_type": "example",
+    "signer_email": "signers@email.com",
+    "status": "ASSIGNED",
+    "special_instructions": "Use Blue ink only",
+    "contact_info": "Use Blue ink only",
+    "return_instructions": "shipping label provided",
+    "faxbacks": true,
     "created_at": "2015-01-01T12:00:00Z",
-    "id": "01234567-89ab-cdef-0123-456789abcdef",
-    "name": "example",
     "updated_at": "2015-01-01T12:00:00Z"
   }
 ]
@@ -1005,14 +1455,14 @@ HTTP/1.1 200 OK
 Update an existing order.
 
 ```
-PATCH /orders/{order_id_or_name}
+PATCH /orders/{order_id}
 ```
 
 
 #### Curl Example
 
 ```bash
-$ curl -n -X PATCH https://api.signingorder.com/orders/$ORDER_ID_OR_NAME \
+$ curl -n -X PATCH https://api.signingorder.com/orders/$ORDER_ID \
   -d '{
 }' \
   -H "Content-Type: application/json"
@@ -1027,9 +1477,102 @@ HTTP/1.1 200 OK
 
 ```json
 {
+  "id": "01958EA1B308807443495AB1462573598756",
+  "order_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "altphone": "444-444-4444",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "additional_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "inhouse_contact": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "loan_officer": {
+    "id": "01958EA1B308807443495AB1462573598756",
+    "name": "Joe Contact",
+    "phone": "555-555-5555",
+    "address_book": true,
+    "private": false,
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "property_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "signing_address": {
+    "id": "00000021A1442D8439B95C61432235892314",
+    "company": "Starbucks",
+    "address1": "56 W 9000 S",
+    "address2": "",
+    "city": "Sandy",
+    "zone": {
+      "id": "000CD01950BF7E14B11B7B50139023144915",
+      "name": "Utah",
+      "code": "UT",
+      "timezone": "America/Denver"
+    },
+    "zipcode": "84070",
+    "type": "signing",
+    "created_at": "2015-01-01T12:00:00Z",
+    "updated_at": "2015-01-01T12:00:00Z"
+  },
+  "escrow_number": "example",
+  "closing_date": "example",
+  "closing_time": null,
+  "closing_timezone": null,
+  "closing_time_mode": "time",
+  "signing_type": 42,
+  "signer_first_name": "example",
+  "signer_last_name": "example",
+  "signer_spouse_first_name": "example",
+  "signer_spouse_last_name": "example",
+  "cosigner_first_name": "example",
+  "cosigner_last_name": "example",
+  "cosigner_spouse_first_name": "example",
+  "cosigner_spouse_last_name": "example",
+  "contact_phone": "555-555-5555",
+  "contact_phone_type": "example",
+  "contact_altphone1": "555-555-5555",
+  "contact_altphone1_type": "example",
+  "contact_altphone2": "555-555-5555",
+  "contact_altphone2_type": "example",
+  "signer_email": "signers@email.com",
+  "status": "ASSIGNED",
+  "special_instructions": "Use Blue ink only",
+  "contact_info": "Use Blue ink only",
+  "return_instructions": "shipping label provided",
+  "faxbacks": true,
   "created_at": "2015-01-01T12:00:00Z",
-  "id": "01234567-89ab-cdef-0123-456789abcdef",
-  "name": "example",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```

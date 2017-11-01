@@ -8,31 +8,225 @@
     "object"
   ],
   "definitions": {
+    
     "id": {
       "description": "unique identifier of order",
+      "example": "01958EA1B308807443495AB1462573598756",
       "readOnly": true,
       "format": "uuid",
       "type": [
         "string"
       ]
     },
-    "name": {
-      "description": "unique name of order",
-      "readOnly": true,
+
+    "order_contact": {
+      "$ref": "/schemata/order_contact"
+    },
+
+    "additional_contact": {
+      "$ref": "/schemata/additional_contact"
+    },
+
+
+    "inhouse_contact": {
+      "$ref": "/schemata/inhouse_contact"
+    },
+
+    "loan_officer": {
+      "$ref": "/schemata/loan_officer",
+      "type": ["null", "object"]
+
+    },
+
+    "property_address": {
+      "description": "property address on order",
+      "$ref": "/schemata/address"
+    },
+    
+    "signing_address": {
+      "description": "signing address on order",
+      "$ref": "/schemata/address"
+    },
+
+    "escrow_number": {
+      "description": "escrow number",
       "type": [
         "string"
       ]
     },
-    "identity": {
-      "anyOf": [
-        {
-          "$ref": "/schemata/order#/definitions/id"
-        },
-        {
-          "$ref": "/schemata/order#/definitions/name"
-        }
+
+    "closing_date": {
+      "description": "closing_date",
+      "type": [
+        "string"
       ]
     },
+
+    "closing_time": {
+      "description": "closing_time",
+      "type": [
+        "null", "string"
+      ]
+    },
+
+    "closing_timezone": {
+      "description": "closing_timezone",
+      "type": [
+        "null", "string"
+      ]
+    },
+
+    "closing_time_mode": {
+      "description": "closing time mode",
+      "type": [
+        "string"
+      ],
+      "enum": ["time", "tbd", "asap"]
+    },
+
+    "signing_type": {
+      "description": "signing type",
+      "type": [
+        "integer"
+      ]
+    },
+
+    "signer_first_name": {
+      "description": "signer first name",
+      "type": ["string"]
+    },
+
+    "signer_last_name": {
+      "description": "signer last name",
+      "type": ["string"]
+    },
+
+    "signer_spouse_first_name": {
+      "description": "signer spouse first name",
+      "type": ["string"]
+    },
+
+    "signer_spouse_last_name": {
+      "description": "signer spuse last name",
+      "type": ["string"]
+    },
+
+    "cosigner_first_name": {
+      "description": "cosigner first name",
+      "type": ["string"]
+    },
+
+    "cosigner_last_name": {
+      "description": "cosigner last name",
+      "type": ["string"]
+    },
+
+    "cosigner_spouse_first_name": {
+      "description": "cosigner first name",
+      "type": ["string"]
+    },
+
+    "cosigner_spouse_last_name": {
+      "description": "cosigner last name",
+      "type": ["string"]
+    },
+
+
+    "contact_phone": {
+      "description": "primary phone of signer",
+      "example": "555-555-5555",
+      "type": [
+        "string"
+      ],
+      "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+    },
+
+    "contact_phone_type": {
+      "description": "contact phone type",
+      "type": ["string"]
+    },
+
+
+    "contact_altphone1": {
+      "description": "alternate phone of signer",
+      "example": "555-555-5555",
+      "type": [
+        "string"
+      ],
+      "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+    },
+
+    "contact_altphone1_type": {
+      "description": "alternate phone type",
+      "type": ["string"]
+    },
+
+    "contact_altphone2": {
+      "description": "second alterate for signer",
+      "example": "555-555-5555",
+      "type": [
+        "string"
+      ],
+      "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+    },
+
+    "contact_altphone2_type": {
+      "description": "alternate phone2 type",
+      "type": ["string"]
+    },
+
+    "signer_email": {
+      "description": "signer's email",
+      "example": "signers@email.com",
+      "format": "email",
+      "type": [
+        "string"
+      ]
+      
+    },
+
+    "status": {
+      "description": "order status",
+      "example": "ASSIGNED",
+      "type": [
+        "string"
+      ]
+    },
+
+    "special_instructions": {
+      "description": "special instructions",
+      "example": "Use Blue ink only",
+      "type": [
+        "string"
+      ]
+    },
+
+    "contact_info": {
+      "description": "contact info",
+      "example": "only accepts calls after 5pm",
+      "type": [
+        "string"
+      ]
+    },
+
+    "return_instructions": {
+      "description": "document return instructions",
+      "example": "shipping label provided",
+      "type": [
+        "string"
+      ]
+    },
+
+    "faxbacks": {
+      "description": "requires faxbacks?",
+      "example": true,
+      "type": [
+        "boolean"
+      ]
+    },
+
+
+
     "created_at": {
       "description": "when order was created",
       "format": "date-time",
@@ -40,11 +234,20 @@
         "string"
       ]
     },
+
     "updated_at": {
       "description": "when order was updated",
       "format": "date-time",
       "type": [
         "string"
+      ]
+    },
+
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/order#/definitions/id"
+        }
       ]
     }
   },
@@ -100,18 +303,152 @@
     }
   ],
   "properties": {
-    "created_at": {
-      "$ref": "/schemata/order#/definitions/created_at"
-    },
+    
     "id": {
       "$ref": "/schemata/order#/definitions/id"
     },
-    "name": {
-      "$ref": "/schemata/order#/definitions/name"
+
+    "order_contact": {
+      "$ref" :"/schemata/order#/definitions/order_contact"
     },
+
+    "additional_contact": {
+      "$ref" :"/schemata/order#/definitions/additional_contact"
+    },
+
+    "inhouse_contact": {
+      "$ref" :"/schemata/order#/definitions/inhouse_contact"
+    },
+
+    "loan_officer": {
+      "$ref" :"/schemata/order#/definitions/loan_officer"
+    },
+
+    "property_address": {
+      "$ref": "/schemata/order#/definitions/property_address"
+    },
+
+    "signing_address": {
+      "$ref": "/schemata/order#/definitions/signing_address"
+    },
+
+    "escrow_number": {
+      "$ref": "/schemata/order#/definitions/escrow_number"
+    },
+
+    "closing_date": {
+      "$ref": "/schemata/order#/definitions/closing_date"
+    },
+
+    "closing_time": {
+      "$ref": "/schemata/order#/definitions/closing_time"
+    },
+
+    "closing_timezone": {
+      "$ref": "/schemata/order#/definitions/closing_timezone"
+    },
+
+    "closing_time_mode": {
+      "$ref": "/schemata/order#/definitions/closing_time_mode"
+    },
+
+    "signing_type": {
+      "$ref": "/schemata/order#/definitions/signing_type"
+    },
+
+    "signer_first_name": {
+      "$ref": "/schemata/order#/definitions/signer_first_name"
+    },
+
+    "signer_last_name": {
+      "$ref": "/schemata/order#/definitions/signer_last_name"
+    },
+
+    "signer_spouse_first_name": {
+      "$ref": "/schemata/order#/definitions/signer_spouse_first_name"
+    },
+
+    "signer_spouse_last_name": {
+      "$ref": "/schemata/order#/definitions/signer_spouse_last_name"
+    },
+
+    "cosigner_first_name": {
+      "$ref": "/schemata/order#/definitions/cosigner_first_name"
+    },
+
+    "cosigner_last_name": {
+      "$ref": "/schemata/order#/definitions/cosigner_last_name"
+    },
+
+    "cosigner_spouse_first_name": {
+      "$ref": "/schemata/order#/definitions/cosigner_spouse_first_name"
+    },
+
+    "cosigner_spouse_last_name": {
+      "$ref": "/schemata/order#/definitions/cosigner_spouse_last_name"
+    },
+
+    "contact_phone": {
+      "$ref": "/schemata/order#/definitions/contact_phone"
+    },
+
+    "contact_phone_type": {
+      "$ref": "/schemata/order#/definitions/contact_phone_type"
+    },
+
+
+    "contact_altphone1": {
+      "$ref": "/schemata/order#/definitions/contact_altphone1"
+    },
+
+    "contact_altphone1_type": {
+      "$ref": "/schemata/order#/definitions/contact_altphone1_type"
+    },
+
+    "contact_altphone2": {
+      "$ref": "/schemata/order#/definitions/contact_altphone2"
+    },
+
+    "contact_altphone2_type": {
+      "$ref": "/schemata/order#/definitions/contact_altphone2_type"
+    },
+
+    "signer_email": {
+      "$ref": "/schemata/order#/definitions/signer_email"
+    },
+
+    "status": {
+      "$ref": "/schemata/order#/definitions/status"
+    },
+
+    "special_instructions": {
+      "$ref": "/schemata/order#/definitions/special_instructions"
+    },
+
+    "contact_info": {
+      "$ref": "/schemata/order#/definitions/special_instructions"
+    },
+
+    "return_instructions": {
+      "$ref": "/schemata/order#/definitions/return_instructions"
+    },
+
+    "faxbacks": {
+      "$ref": "/schemata/order#/definitions/faxbacks"
+    },
+
+
+
+
+    "created_at": {
+      "$ref": "/schemata/order#/definitions/created_at"
+    },
+
     "updated_at": {
       "$ref": "/schemata/order#/definitions/updated_at"
     }
+
+
   },
   "id": "schemata/order"
 }
