@@ -484,12 +484,12 @@ HTTP/1.1 201 Created
 
 ```json
 {
-  "created_at": "2015-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "name": "filename.pdf",
   "description": "Signing Package",
   "downloaded": true,
   "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -530,12 +530,12 @@ HTTP/1.1 201 Created
 
 ```json
 {
-  "created_at": "2015-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "name": "filename.pdf",
   "description": "Signing Package",
   "downloaded": true,
   "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -565,12 +565,12 @@ HTTP/1.1 200 OK
 
 ```json
 {
-  "created_at": "2015-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "name": "filename.pdf",
   "description": "Signing Package",
   "downloaded": true,
   "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -599,12 +599,12 @@ HTTP/1.1 200 OK
 
 ```json
 {
-  "created_at": "2015-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "name": "filename.pdf",
   "description": "Signing Package",
   "downloaded": true,
   "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -633,12 +633,12 @@ HTTP/1.1 200 OK
 
 ```json
 {
-  "created_at": "2015-01-01T12:00:00Z",
   "id": "01234567-89ab-cdef-0123-456789abcdef",
   "name": "filename.pdf",
   "description": "Signing Package",
   "downloaded": true,
   "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
 ```
@@ -668,12 +668,12 @@ HTTP/1.1 200 OK
 ```json
 [
   {
-    "created_at": "2015-01-01T12:00:00Z",
     "id": "01234567-89ab-cdef-0123-456789abcdef",
     "name": "filename.pdf",
     "description": "Signing Package",
     "downloaded": true,
     "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+    "created_at": "2015-01-01T12:00:00Z",
     "updated_at": "2015-01-01T12:00:00Z"
   }
 ]

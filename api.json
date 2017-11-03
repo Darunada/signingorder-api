@@ -427,9 +427,6 @@
         }
       ],
       "properties": {
-        "created_at": {
-          "$ref": "#/definitions/document/definitions/created_at"
-        },
         "id": {
           "$ref": "#/definitions/document/definitions/id"
         },
@@ -444,6 +441,9 @@
         },
         "download_url": {
           "$ref": "#/definitions/document/definitions/download_url"
+        },
+        "created_at": {
+          "$ref": "#/definitions/document/definitions/created_at"
         },
         "updated_at": {
           "$ref": "#/definitions/document/definitions/updated_at"
