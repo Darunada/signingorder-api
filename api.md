@@ -459,7 +459,7 @@ Documents related to the order
 | **name** | *string* | name of document | `"filename.pdf"` |
 | **updated_at** | *date-time* | when document was updated | `"2015-01-01T12:00:00Z"` |
 
-### <a name="link-PUT-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents">Document Create</a>
+### <a name="link-PUT-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents">Document Upload</a>
 
 Create a new document.  The document should be sent using ```Content-Type: multipart/form-data;``` in a PUT request.  The resulting document object will be returned.
 
@@ -494,7 +494,7 @@ HTTP/1.1 201 Created
 }
 ```
 
-### <a name="link-PATCH-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">Document Create</a>
+### <a name="link-PATCH-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">Document Update</a>
 
 Update a document's meta data.
 

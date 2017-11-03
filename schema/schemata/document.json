@@ -74,7 +74,7 @@
       "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
       "method": "PUT",
       "rel": "create",
-      "title": "Create"
+      "title": "Upload"
     },
     {
       "description": "Update a document's meta data.",
@@ -95,7 +95,7 @@
           "object"
         ]
       },
-      "title": "Create"
+      "title": "Update"
     },
     {
       "description": "Delete an existing document.",
