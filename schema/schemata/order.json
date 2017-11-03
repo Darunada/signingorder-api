@@ -8,7 +8,7 @@
     "object"
   ],
   "definitions": {
-    
+
     "id": {
       "description": "unique identifier of order",
       "example": "01958EA1B308807443495AB1462573598756",
@@ -20,32 +20,54 @@
     },
 
     "order_contact": {
-      "$ref": "/schemata/order_contact"
+      "description": "The order contacr",
+      "$ref": "/schemata/order_contact",
+      "type": [
+        "object"
+      ]
     },
 
     "additional_contact": {
-      "$ref": "/schemata/additional_contact"
+      "description":"Additional Contact",
+      "$ref": "/schemata/additional_contact",
+      "type": [
+        "object"
+      ]
     },
 
 
     "inhouse_contact": {
-      "$ref": "/schemata/inhouse_contact"
+      "description": "Inhouse Contact",
+      "$ref": "/schemata/inhouse_contact",
+      "type": [
+        "object"
+      ]
     },
 
     "loan_officer": {
+      "description": "Loan Officer",
       "$ref": "/schemata/loan_officer",
-      "type": ["null", "object"]
+      "type": ["null", "object"],
+      "type": [
+        "object"
+      ]
 
     },
 
     "property_address": {
       "description": "property address on order",
-      "$ref": "/schemata/address"
+      "$ref": "/schemata/address",
+      "type": [
+        "object"
+      ]
     },
     
     "signing_address": {
       "description": "signing address on order",
-      "$ref": "/schemata/address"
+      "$ref": "/schemata/address",
+      "type": [
+        "object"
+      ]
     },
 
     "escrow_number": {
@@ -222,6 +244,14 @@
       "example": true,
       "type": [
         "boolean"
+      ]
+    },
+
+    "document_url": {
+      "description": "requires faxbacks?",
+      "example": "https://api.signingorder.com/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
+      "type": [
+        "string"
       ]
     },
 
@@ -439,6 +469,9 @@
 
 
 
+    "document_url": {
+      "$ref": "/schemata/order#/definitions/document_url"
+    },
 
     "created_at": {
       "$ref": "/schemata/order#/definitions/created_at"

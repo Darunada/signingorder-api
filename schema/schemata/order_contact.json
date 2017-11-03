@@ -78,11 +78,7 @@
 
 
     "identity": {
-      "anyOf": [
-        {
-          "$ref": "/schemata/order_contact#/definitions/id"
-        }
-      ]
+      "$ref": "/schemata/order_contact#/definitions/id"
     },
 
     "created_at": {

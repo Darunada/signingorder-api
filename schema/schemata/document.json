@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "SigningOrder - Document",
+  "description": "Documents related to the order",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "id": {
+      "description": "unique identifier of document",
+      "readOnly": true,
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "description": "name of document",
+      "example": "filename.pdf",
+      "type": [
+        "string"
+      ]
+    },
+    "description": {
+      "description": "description to go along with document",
+      "example": "Signing Package",
+      "type": [
+        "string"
+      ]
+    },
+    "downloaded": {
+      "description": "if the notary has downloaded the document",
+      "readOnly": true,
+      "type": [
+        "boolean"
+      ]
+    },
+
+    "download_url": {
+      "description": "url to fetch the file",
+      "example": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+      "readOnly": true,
+      "type": [
+        "file"
+      ]
+    },
+    "identity": {
+      "anyOf": [
+        {
+          "$ref": "/schemata/document#/definitions/id"
+        }
+      ]
+    },
+    "created_at": {
+      "description": "when document was created",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    },
+    "updated_at": {
+      "description": "when document was updated",
+      "format": "date-time",
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "links": [
+    {
+      "description": "Create a new document.  The document should be sent using ```Content-Type: multipart/form-data;``` in a PUT request.  The resulting document object will be returned.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
+      "method": "PUT",
+      "rel": "create",
+      "title": "Create"
+    },
+    {
+      "description": "Update a document's meta data.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents/{(%2Fschemata%2Fdocument%23%2Fdefinitions%2Fidentity)}",
+      "method": "PATCH",
+      "rel": "create",
+      "schema": {
+        "properties": {
+            "name": {
+              "$ref": "/schemata/document#/definitions/name"
+            },
+           "description": {
+              "$ref": "/schemata/document#/definitions/description"
+            }
+
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "title": "Create"
+    },
+    {
+      "description": "Delete an existing document.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents/{(%2Fschemata%2Fdocument%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete"
+    },
+    {
+      "description": "Info for existing document.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents/{(%2Fschemata%2Fdocument%23%2Fdefinitions%2Fidentity)}",
+      "method": "GET",
+      "rel": "self",
+      "title": "Info"
+    },
+    {
+      "description": "Download existing document.  This is a direct link to the file which you can then fetch yourself using curl, etc.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents/{(%2Fschemata%2Fdocument%23%2Fdefinitions%2Fidentity)}/{(%2Fschemata%2Fdocument%23%2Fdefinitions%2Fname)}",
+      "method": "GET",
+      "rel": "",
+      "title": "Download"
+    },
+    {
+      "description": "List existing documents.",
+      "href": "/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
+      "method": "GET",
+      "rel": "instances",
+      "title": "List"
+    }
+  ],
+  "properties": {
+    "created_at": {
+      "$ref": "/schemata/document#/definitions/created_at"
+    },
+    "id": {
+      "$ref": "/schemata/document#/definitions/id"
+    },
+    "name": {
+      "$ref": "/schemata/document#/definitions/name"
+    },
+    "description": {
+      "$ref": "/schemata/document#/definitions/description"
+    },
+    "downloaded": {
+      "$ref": "/schemata/document#/definitions/downloaded"
+    },
+    "download_url": {
+      "$ref": "/schemata/document#/definitions/download_url"
+    },
+    
+    "updated_at": {
+      "$ref": "/schemata/document#/definitions/updated_at"
+    }
+  },
+  "id": "schemata/document"
+}

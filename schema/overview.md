@@ -15,6 +15,8 @@ Accept: application/vnd.signingorder.api+json; version=1
 Content-Type: application/json
 ```
 
+In most cases, the request content should be a JSON encoded string containing the request body, as described in the specification below.
+
 #### Ranges
 List Requests will return a ```Content-Range``` header indicating the range of values returned.  Large lists may require additional requests to retrieve. If a list response has been truncated you will receive a ```206 Partial Content``` status and the ```Next-Range``` header set. To retrieve the next range, repeat the request with the ```Range``` header set to the value of the previous request’s ```Next-Range``` header.
 
@@ -38,3 +40,16 @@ Pay attention to the use of authentication and authorization error codes
 * ```422 Unprocessable Entity```: Your request was understood, but contained invalid parameters
 * ```429 Too Many Requests```: You have been rate-limited, retry later
 * ```500 Internal Server Error```: Something went wrong on the server, check status site and/or report the issue
+
+### Webhooks
+SigningOrder can initiate HTTP POST requests to your configured callback URL when events occur with your orders within our platform.  The following events are sent.
+
+* Signed Document Uploaded
+* Order Completed
+* Order Assigned to Notary
+* Other status change events...
+* Note Added
+
+
+#### Securing Webhooks
+To ensure the authenticity of event requests, SigningOrder will sign the request and post the signature along with the other webhook parameters.  To verify the webhook, users must contatenate the timestamp and token values, then encoude the resulting string with the HMAC algorithm using your API Key.  The result will match the signature provided in the request.

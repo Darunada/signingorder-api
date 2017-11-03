@@ -15,6 +15,8 @@ Accept: application/vnd.signingorder.api+json; version=1
 Content-Type: application/json
 ```
 
+In most cases, the request content should be a JSON encoded string containing the request body, as described in the specification below.
+
 #### Ranges
 List Requests will return a ```Content-Range``` header indicating the range of values returned.  Large lists may require additional requests to retrieve. If a list response has been truncated you will receive a ```206 Partial Content``` status and the ```Next-Range``` header set. To retrieve the next range, repeat the request with the ```Range``` header set to the value of the previous request’s ```Next-Range``` header.
 
@@ -39,6 +41,19 @@ Pay attention to the use of authentication and authorization error codes
 * ```429 Too Many Requests```: You have been rate-limited, retry later
 * ```500 Internal Server Error```: Something went wrong on the server, check status site and/or report the issue
 
+### Webhooks
+SigningOrder can initiate HTTP POST requests to your configured callback URL when events occur with your orders within our platform.  The following events are sent.
+
+* Signed Document Uploaded
+* Order Completed
+* Order Assigned to Notary
+* Other status change events...
+* Note Added
+
+
+#### Securing Webhooks
+To ensure the authenticity of event requests, SigningOrder will sign the request and post the signature along with the other webhook parameters.  To verify the webhook, users must contatenate the timestamp and token values, then encoude the resulting string with the HMAC algorithm using your API Key.  The result will match the signature provided in the request.
+
 # The table of contents
   - <a href="#resource-additional_contact">Additional Contact</a>
     - <a href="#link-POST-additional_contact-/additional-contacts">POST /additional-contacts</a>
@@ -49,6 +64,13 @@ Pay attention to the use of authentication and authorization error codes
   - <a href="#resource-address">Addresses</a>
     - <a href="#link-GET-address-/addresses/{(%23%2Fdefinitions%2Faddress%2Fdefinitions%2Fidentity)}">GET /addresses/{(%23%2Fdefinitions%2Faddress%2Fdefinitions%2Fidentity)}</a>
     - <a href="#link-PATCH-address-/addresses/{(%23%2Fdefinitions%2Faddress%2Fdefinitions%2Fidentity)}">PATCH /addresses/{(%23%2Fdefinitions%2Faddress%2Fdefinitions%2Fidentity)}</a>
+  - <a href="#resource-document">Document</a>
+    - <a href="#link-PUT-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents">PUT /orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents</a>
+    - <a href="#link-PATCH-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">PATCH /orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}</a>
+    - <a href="#link-DELETE-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">DELETE /orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}</a>
+    - <a href="#link-GET-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">GET /orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}</a>
+    - <a href="#link-GET-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fname)}">GET /orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fname)}</a>
+    - <a href="#link-GET-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents">GET /orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents</a>
   - <a href="#resource-inhouse_contact">Inhouse Contact</a>
     - <a href="#link-POST-inhouse_contact-/inhouse-contacts">POST /inhouse-contacts</a>
     - <a href="#link-DELETE-inhouse_contact-/inhouse-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}">DELETE /inhouse-contacts/{(%23%2Fdefinitions%2Forder_contact%2Fdefinitions%2Fidentity)}</a>
@@ -416,6 +438,245 @@ HTTP/1.1 200 OK
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
+```
+
+
+## <a name="resource-document">Document</a>
+
+Stability: `prototype`
+
+Documents related to the order
+
+### Attributes
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **created_at** | *date-time* | when document was created | `"2015-01-01T12:00:00Z"` |
+| **description** | *string* | description to go along with document | `"Signing Package"` |
+| **download_url** | *file* | url to fetch the file | `"https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf"` |
+| **downloaded** | *boolean* | if the notary has downloaded the document | `true` |
+| **id** | *uuid* | unique identifier of document | `"01234567-89ab-cdef-0123-456789abcdef"` |
+| **name** | *string* | name of document | `"filename.pdf"` |
+| **updated_at** | *date-time* | when document was updated | `"2015-01-01T12:00:00Z"` |
+
+### <a name="link-PUT-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents">Document Create</a>
+
+Create a new document.  The document should be sent using ```Content-Type: multipart/form-data;``` in a PUT request.  The resulting document object will be returned.
+
+```
+PUT /orders/{order_id}/documents
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n -X PUT https://api.signingorder.com/orders/$ORDER_ID/documents \
+  -H "Content-Type: application/json"
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 201 Created
+```
+
+```json
+{
+  "created_at": "2015-01-01T12:00:00Z",
+  "id": "01234567-89ab-cdef-0123-456789abcdef",
+  "name": "filename.pdf",
+  "description": "Signing Package",
+  "downloaded": true,
+  "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "updated_at": "2015-01-01T12:00:00Z"
+}
+```
+
+### <a name="link-PATCH-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">Document Create</a>
+
+Update a document's meta data.
+
+```
+PATCH /orders/{order_id}/documents/{document_id}
+```
+
+#### Optional Parameters
+
+| Name | Type | Description | Example |
+| ------- | ------- | ------- | ------- |
+| **description** | *string* | description to go along with document | `"Signing Package"` |
+| **name** | *string* | name of document | `"filename.pdf"` |
+
+
+#### Curl Example
+
+```bash
+$ curl -n -X PATCH https://api.signingorder.com/orders/$ORDER_ID/documents/$DOCUMENT_ID \
+  -d '{
+  "name": "filename.pdf",
+  "description": "Signing Package"
+}' \
+  -H "Content-Type: application/json"
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 201 Created
+```
+
+```json
+{
+  "created_at": "2015-01-01T12:00:00Z",
+  "id": "01234567-89ab-cdef-0123-456789abcdef",
+  "name": "filename.pdf",
+  "description": "Signing Package",
+  "downloaded": true,
+  "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "updated_at": "2015-01-01T12:00:00Z"
+}
+```
+
+### <a name="link-DELETE-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">Document Delete</a>
+
+Delete an existing document.
+
+```
+DELETE /orders/{order_id}/documents/{document_id}
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n -X DELETE https://api.signingorder.com/orders/$ORDER_ID/documents/$DOCUMENT_ID \
+  -H "Content-Type: application/json"
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "created_at": "2015-01-01T12:00:00Z",
+  "id": "01234567-89ab-cdef-0123-456789abcdef",
+  "name": "filename.pdf",
+  "description": "Signing Package",
+  "downloaded": true,
+  "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "updated_at": "2015-01-01T12:00:00Z"
+}
+```
+
+### <a name="link-GET-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}">Document Info</a>
+
+Info for existing document.
+
+```
+GET /orders/{order_id}/documents/{document_id}
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n https://api.signingorder.com/orders/$ORDER_ID/documents/$DOCUMENT_ID
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "created_at": "2015-01-01T12:00:00Z",
+  "id": "01234567-89ab-cdef-0123-456789abcdef",
+  "name": "filename.pdf",
+  "description": "Signing Package",
+  "downloaded": true,
+  "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "updated_at": "2015-01-01T12:00:00Z"
+}
+```
+
+### <a name="link-GET-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fidentity)}/{(%23%2Fdefinitions%2Fdocument%2Fdefinitions%2Fname)}">Document Download</a>
+
+Download existing document.  This is a direct link to the file which you can then fetch yourself using curl, etc.
+
+```
+GET /orders/{order_id}/documents/{document_id}/{document_name}
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n https://api.signingorder.com/orders/$ORDER_ID/documents/$DOCUMENT_ID/$DOCUMENT_NAME
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "created_at": "2015-01-01T12:00:00Z",
+  "id": "01234567-89ab-cdef-0123-456789abcdef",
+  "name": "filename.pdf",
+  "description": "Signing Package",
+  "downloaded": true,
+  "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+  "updated_at": "2015-01-01T12:00:00Z"
+}
+```
+
+### <a name="link-GET-document-/orders/{(%23%2Fdefinitions%2Forder%2Fdefinitions%2Fidentity)}/documents">Document List</a>
+
+List existing documents.
+
+```
+GET /orders/{order_id}/documents
+```
+
+
+#### Curl Example
+
+```bash
+$ curl -n https://api.signingorder.com/orders/$ORDER_ID/documents
+```
+
+
+#### Response Example
+
+```
+HTTP/1.1 200 OK
+```
+
+```json
+[
+  {
+    "created_at": "2015-01-01T12:00:00Z",
+    "id": "01234567-89ab-cdef-0123-456789abcdef",
+    "name": "filename.pdf",
+    "description": "Signing Package",
+    "downloaded": true,
+    "download_url": "https://api.signingorder.com/orders/{order-id}/documents/{document-id}/filename.pdf",
+    "updated_at": "2015-01-01T12:00:00Z"
+  }
+]
 ```
 
 
@@ -887,6 +1148,7 @@ FIXME
 | **cosigner_spouse_first_name** | *string* | cosigner first name | `"example"` |
 | **cosigner_spouse_last_name** | *string* | cosigner last name | `"example"` |
 | **created_at** | *date-time* | when order was created | `"2015-01-01T12:00:00Z"` |
+| **document_url** | *string* | requires faxbacks? | `"https://api.signingorder.com/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents"` |
 | **escrow_number** | *string* | escrow number | `"example"` |
 | **faxbacks** | *boolean* | requires faxbacks? | `true` |
 | **id** | *uuid* | unique identifier of order | `"01958EA1B308807443495AB1462573598756"` |
@@ -896,7 +1158,6 @@ FIXME
 | **[inhouse_contact:name](#resource-order_contact)** | *string* | name of order_contact | `"Joe Contact"` |
 | **[inhouse_contact:phone](#resource-order_contact)** | *string* | phone of order_contact<br/> **pattern:** `^\d{3}-\d{3}-\d{4}$` | `"555-555-5555"` |
 | **[inhouse_contact:updated_at](#resource-order_contact)** | *date-time* | when order_contact was updated | `"2015-01-01T12:00:00Z"` |
-| **[loan_officer](#resource-order_contact)** | *nullable object* | Loan Officer contact on order | `null` |
 | **[loan_officer:address_book](#resource-order_contact)** | *boolean* | in address book | `true` |
 | **[loan_officer:created_at](#resource-order_contact)** | *date-time* | when order_contact was created | `"2015-01-01T12:00:00Z"` |
 | **[loan_officer:id](#resource-order_contact)** | *uuid* | unique identifier of order_contact | `"01958EA1B308807443495AB1462573598756"` |
@@ -1070,6 +1331,7 @@ HTTP/1.1 201 Created
   "contact_info": "Use Blue ink only",
   "return_instructions": "shipping label provided",
   "faxbacks": true,
+  "document_url": "https://api.signingorder.com/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
@@ -1195,6 +1457,7 @@ HTTP/1.1 200 OK
   "contact_info": "Use Blue ink only",
   "return_instructions": "shipping label provided",
   "faxbacks": true,
+  "document_url": "https://api.signingorder.com/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
@@ -1319,6 +1582,7 @@ HTTP/1.1 200 OK
   "contact_info": "Use Blue ink only",
   "return_instructions": "shipping label provided",
   "faxbacks": true,
+  "document_url": "https://api.signingorder.com/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
@@ -1444,6 +1708,7 @@ HTTP/1.1 200 OK
     "contact_info": "Use Blue ink only",
     "return_instructions": "shipping label provided",
     "faxbacks": true,
+    "document_url": "https://api.signingorder.com/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
     "created_at": "2015-01-01T12:00:00Z",
     "updated_at": "2015-01-01T12:00:00Z"
   }
@@ -1572,6 +1837,7 @@ HTTP/1.1 200 OK
   "contact_info": "Use Blue ink only",
   "return_instructions": "shipping label provided",
   "faxbacks": true,
+  "document_url": "https://api.signingorder.com/orders/{(%2Fschemata%2Forder%23%2Fdefinitions%2Fidentity)}/documents",
   "created_at": "2015-01-01T12:00:00Z",
   "updated_at": "2015-01-01T12:00:00Z"
 }
